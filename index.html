@@ -12,20 +12,48 @@
             background-color: #f8f9fa;
             color: #343a40;
         }
+        html {
+            scroll-behavior: smooth;
+        }
         .section-title {
             position: relative;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #1e3a8a;
+            letter-spacing: 1px;
+            animation: fadeInTitle 1s ease;
         }
+        /* Remove icon */
+        /* Set section-title to white when inside blue background sections */
+        .bg-blue-700 .section-title,
+        .bg-blue-800 .section-title {
+            color: #fff;
+        }
+        /* Underline remains */
         .section-title::after {
             content: '';
             position: absolute;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             bottom: 0;
-            width: 60px;
+            width: 80px;
             height: 4px;
-            background-color: #007bff;
+            background: currentColor;
             border-radius: 2px;
+            animation: underlineGrow 1s cubic-bezier(0.4,0,0.2,1);
+            z-index: 2;
+        }
+        @keyframes underlineGrow {
+            from { width: 0; opacity: 0; }
+            to { width: 80px; opacity: 1; }
+        }
+        @keyframes fadeInTitle {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .card {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -53,6 +81,10 @@
         }
         tr:hover {
             background-color: #e2e6ea;
+        }
+        /* Add scroll-margin-top to all major sections for sticky header offset */
+        section[id] {
+            scroll-margin-top: 96px;
         }
     </style>
 </head>
@@ -93,7 +125,7 @@
                         Astra Security's customer engagement strategy is built around its core Pentest offerings and strong support systems, with a focus on proactive communication and delivering continuous value at every stage of the customer journey.
                     </p>
                     <p class="text-lg leading-relaxed">
-                        Positioned as a “Next-generation Penetration Testing Platform,” Astra is shifting away from one-off security checks to offer continuous, integrated protection, aligned with today’s DevSecOps needs.
+                        Positioned as a "Next-generation Penetration Testing Platform," Astra is shifting away from one-off security checks to offer continuous, integrated protection, aligned with today's DevSecOps needs.
                     </p>
                     <p class="text-lg leading-relaxed">
                         The platform supports a wide range of pentests, from Web and Mobile Apps to APIs, Cloud, Network, and even Blockchain, making it highly versatile for businesses across industries.
@@ -116,7 +148,7 @@
                 <div class="bg-white rounded-lg p-6 card">
                     <h4 class="text-xl font-semibold mb-3 text-blue-700">Pre-Sales / Discovery</h4>
                     <p class="text-gray-700">
-                        The CSM collaborates with the sales team pre-handoff to understand the customer’s security needs, business goals, and technical setup. This ensures a seamless transition post-sale.
+                        The CSM collaborates with the sales team pre-handoff to understand the customer's security needs, business goals, and technical setup. This ensures a seamless transition post-sale.
                     </p>
                 </div>
                 <!-- Onboarding -->
@@ -137,7 +169,7 @@
                 <div class="bg-white rounded-lg p-6 card">
                     <h4 class="text-xl font-semibold mb-3 text-blue-700">Expansion & Advocacy</h4>
                     <p class="text-gray-700">
-                        During QBRs, CSMs highlight security improvements and identify upsell/cross-sell opportunities. Customers are encouraged to use Astra’s Publicly Verifiable Pentest Certificate.
+                        During QBRs, CSMs highlight security improvements and identify upsell/cross-sell opportunities. Customers are encouraged to use Astra's Publicly Verifiable Pentest Certificate.
                     </p>
                 </div>
             </div>
@@ -176,7 +208,7 @@
                                 <td class="py-3 px-4">Regular Check-ins, Vulnerability Reports, Dashboard Reviews, Support Tickets</td>
                                 <td class="py-3 px-4">Dedicated CSM, Slack, Email, In-Platform Alerts, Direct Expert Access, Scheduled Calls</td>
                                 <td class="py-3 px-4">Usage Monitoring, Value Reviews, Compliance Updates, ROI Discussions, Remediation Guidance, CI/CD Integration Support</td>
-                                <td class="py-3 px-4">CXO-Friendly Dashboard, Vulnerability Management Dashboard, AI Generated Fix Recommendations, Compliance Specific Scans, Direct Access to Security Expert, CI/CD Integrations, Zero False Positives</td>
+                                <td class="py-3 px-4">CXO-Friendly Dashboard, Vulnerability Management dashboard, AI Generated Fix Recommendations, Compliance Specific Scans, Direct Access to Security Expert, CI/CD Integrations, Zero False Positives</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4 font-bold">Expansion and Advocacy</td>
@@ -281,7 +313,7 @@
         <div class="container mx-auto">
             <h3 class="text-4xl font-bold mb-8 text-center section-title">Strategy for High Customer Renewal Rates</h3>
             <p class="text-lg text-center mb-10 max-w-2xl mx-auto">
-                Astra’s renewal success hinges on demonstrating continuous, visible, and quantifiable value to customers. The CSM plays a crucial role in translating Astra’s technical features into clear business outcomes.
+                Astra's renewal success hinges on demonstrating continuous, visible, and quantifiable value to customers. The CSM plays a crucial role in translating Astra's technical features into clear business outcomes.
             </p>
 
             <div class="grid md:grid-cols-2 gap-8">
@@ -438,17 +470,17 @@
             </p>
             <div class="mt-12 p-8 bg-blue-800 rounded-lg shadow-xl">
                 <p class="text-lg mb-4 opacity-90">
-                    Subject: Let’s Make This Right - Astra Security
+                    Subject: Let's Make This Right - Astra Security
                 </p>
                 <blockquote class="border-l-4 border-white pl-4 text-lg italic opacity-90">
-                    Hello &lt;Customer Name&gt;!<br><br>I’m really sorry to hear about your experience with the delayed delivery and quality of the Pentest. I completely understand how frustrating that must be, and I want you to know we’re taking this seriously.
-                    <br><br>Here’s what we’re doing right away:
+                    Hello &lt;Customer Name&gt;!<br><br>I'm really sorry to hear about your experience with the delayed delivery and quality of the Pentest. I completely understand how frustrating that must be, and I want you to know we're taking this seriously.
+                    <br><br>Here's what we're doing right away:
                     <ul class="list-disc list-outside ml-4 mt-2">
-                        <li>A senior security engineer is reviewing your Pentest report, and we’ll share an updated, verified version as soon as possible. &lt;We can promise a timeline for turnaround as confirmed by the relevant technical team&gt;</li>
+                        <li>A senior security engineer is reviewing your Pentest report, and we'll share an updated, verified version as soon as possible. &lt;We can promise a timeline for turnaround as confirmed by the relevant technical team&gt;</li>
                         <li>Your case has been prioritized in our queue to make sure there are no further delays.</li>
                     </ul>
-                    <br>Going forward, we’re adding extra quality checks for your account and will keep you updated regularly so you’re never left in the dark again.</li>
-                    <br><br>I’d also love to set up a quick call with our technical team once the updated report is ready - just to walk you through it and hear your thoughts. Looking forward to catching up with you soon!<br><br> Thank you for your patience.
+                    <br>Going forward, we're adding extra quality checks for your account and will keep you updated regularly so you're never left in the dark again.</li>
+                    <br><br>I'd also love to set up a quick call with our technical team once the updated report is ready - just to walk you through it and hear your thoughts. Looking forward to catching up with you soon!<br><br> Thank you for your patience.
                 </blockquote>
                 <p class="text-sm mt-6 opacity-80">
                     <span class="font-semibold">Note:</span> Constant communication ensures the customer feels valued. A gesture of goodwill (e.g., free re-scan, extended support) is a best practice.
